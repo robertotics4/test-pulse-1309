@@ -1,4 +1,10 @@
 {
+   "type": "postgres",
+   "host": "lallah.db.elephantsql.com",
+   "port": 5432,
+   "username": "ygtjrsim",
+   "password": "IZ4uOrLMf-j74kqNazYjrxNpdHYt_jdp",
+   "database": "ygtjrsim",
    "synchronize": true,
    "logging": false,
    "entities": [
