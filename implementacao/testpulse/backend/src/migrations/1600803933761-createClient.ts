@@ -17,21 +17,25 @@ export default class createClient1600803933761 implements MigrationInterface {
                         name: "name",
                         type: "varchar",
                         length: "50",
+                        isNullable: false,
                     },
                     {
                         name: "cpf",
                         type: "varchar",
                         length: "14",
+                        isNullable: false,
                     },
                     {
                         name: "email",
                         type: "varchar",
                         length: "50",
+                        isNullable: false,
                     },
                     {
                         name: "phone",
                         type: "varchar",
                         length: "15",
+                        isNullable: false,
                     },
                     {
                         name: "address_id",
@@ -53,6 +57,6 @@ export default class createClient1600803933761 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.dropTable("Client");
+        await queryRunner.dropTable("Client");
     }
 }
