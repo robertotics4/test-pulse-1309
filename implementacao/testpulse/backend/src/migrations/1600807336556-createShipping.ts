@@ -1,11 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export default class createShippingCompany1600806905267
-    implements MigrationInterface {
+export default class createShipping1600807336556 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "ShippingCompany",
+                name: "Shipping",
                 columns: [
                     {
                         name: "id",
@@ -15,29 +14,20 @@ export default class createShippingCompany1600806905267
                         default: "uuid_generate_v4()",
                     },
                     {
-                        name: "name",
-                        type: "varchar",
-                        length: "50",
-                        isNullable: false,
+                        name: "description",
+                        type: "text",
+                        isNullable: true,
                     },
                     {
-                        name: "cnpj",
-                        type: "varchar",
-                        length: "18",
-                        isNullable: false,
-                    },
-                    {
-                        name: "shipping",
+                        name: "price",
                         type: "decimal",
                         precision: 5,
                         scale: 2,
                         isNullable: false,
                     },
                     {
-                        name: "phone",
-                        type: "varchar",
-                        length: "15",
-                        isNullable: false,
+                        name: "shippingCompany_id",
+                        type: "uuid",
                     },
                 ],
             })
@@ -45,6 +35,6 @@ export default class createShippingCompany1600806905267
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("ShippingCompany");
+        await queryRunner.dropTable("Shipping");
     }
 }
