@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export default class createTypeOfPayment1600825143935
+export default class createFormOfPayment1600826006392
     implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "TypeOfPayment",
+                name: "FormOfPayment",
                 columns: [
                     {
                         name: "id",
@@ -21,6 +21,11 @@ export default class createTypeOfPayment1600825143935
                         isNullable: false,
                     },
                     {
+                        name: "type",
+                        type: "enum",
+                        enum: ["à vista", "a prazo"],
+                    },
+                    {
                         name: "installments",
                         type: "int",
                         isNullable: true,
@@ -31,6 +36,6 @@ export default class createTypeOfPayment1600825143935
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("TypeOfPayment");
+        await queryRunner.dropTable("FormOfPayment");
     }
 }
