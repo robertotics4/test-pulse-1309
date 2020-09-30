@@ -21,10 +21,10 @@ export default class Shipping {
     @Column({ type: "decimal", precision: 5, scale: 2, nullable: false })
     price: number;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: "created_at" })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
     @ManyToOne((type) => ShippingCompany, (shippings) => Shipping)

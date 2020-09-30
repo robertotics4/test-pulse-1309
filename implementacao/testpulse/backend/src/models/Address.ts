@@ -40,13 +40,13 @@ export default class Address {
     @Column({ type: "varchar", length: 9, nullable: false, unique: true })
     cep: string;
 
-    @Column({ type: "bool", default: true })
-    is_first: boolean;
+    @Column({ name: "is_first", type: "bool", default: false })
+    isFirst: boolean;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: "created_at" })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
     @ManyToOne((type) => Client, (addresses) => Address)

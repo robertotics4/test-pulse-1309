@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from "typeorm";
 import Payment from "./Payment";
 
 export enum TypePayment {
@@ -19,6 +26,12 @@ export default class FormOfPayment {
 
     @Column({ type: "int", nullable: true })
     installments: number;
+
+    @CreateDateColumn({ name: "created_at" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: "updated_at" })
+    updatedAt: Date;
 
     @OneToMany((type) => Payment, (formOfPayment) => FormOfPayment)
     payments: Payment[];

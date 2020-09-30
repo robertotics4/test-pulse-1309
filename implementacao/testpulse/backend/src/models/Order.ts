@@ -1,5 +1,6 @@
 import {
     Column,
+    CreateDateColumn,
     Entity,
     JoinColumn,
     JoinTable,
@@ -7,6 +8,7 @@ import {
     ManyToOne,
     OneToOne,
     PrimaryGeneratedColumn,
+    UpdateDateColumn,
 } from "typeorm";
 import Client from "./Client";
 import Payment from "./Payment";
@@ -21,6 +23,12 @@ export default class Order {
 
     @Column({ type: "date" })
     date: Date;
+
+    @CreateDateColumn({ name: "created_at" })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: "updated_at" })
+    updatedAt: Date;
 
     @ManyToOne((type) => Client, (orders) => Order)
     client: Client;

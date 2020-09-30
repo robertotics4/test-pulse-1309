@@ -16,10 +16,10 @@ export default class Category {
     @Column({ type: "varchar", length: 50, nullable: false, unique: true })
     name: string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: "created_at" })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
     @OneToMany((type) => Product, (category) => Category)

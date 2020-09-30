@@ -1,5 +1,10 @@
-import { type } from "os";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from "typeorm";
 import Payment from "./Payment";
 
 @Entity()
@@ -16,6 +21,12 @@ export default class Coupon {
     @Column({ type: "decimal", precision: 5, scale: 2, nullable: false })
     discount: number;
 
-    @OneToMany(type => Payment, coupon => Coupon)
+    @CreateDateColumn({ name: "created_at" })
+    createdAt: Date;
+
+    @CreateDateColumn({ name: "updated_at" })
+    updatedAt: Date;
+
+    @OneToMany((type) => Payment, (coupon) => Coupon)
     payments: Payment[];
 }
