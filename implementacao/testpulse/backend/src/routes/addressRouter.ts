@@ -4,7 +4,6 @@ import Address from "../models/Address";
 
 const addressRouter = Router();
 
-
 addressRouter.post("/", async (request: Request, response: Response) => {
     try {
         const repository = getRepository(Address);
@@ -28,5 +27,21 @@ addressRouter.get("/", async (request: Request, response: Response) => {
         });
     }
 });
+
+addressRouter.delete(
+    "/:addressId",
+    async (request: Request, response: Response) => {
+        try {
+            const { addressId } = request.params;
+            const repository = getRepository(Address);
+            const deleted = await repository.delete(addressId);
+            return response.status(204).json(deleted);
+        } catch (err) {
+            return response.status(500).json({
+                error: err.message,
+            });
+        }
+    }
+);
 
 export default addressRouter;

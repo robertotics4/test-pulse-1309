@@ -32,9 +32,12 @@ export default class Client {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => Address, (client) => Client)
+    @OneToMany((type) => Address, (addresses) => addresses.client, {
+        cascade: true,
+        eager: true,
+    })
     addresses: Address[];
 
-    @OneToMany((type) => Order, (client) => Client)
+    @OneToMany((type) => Order, (orders) => orders.client)
     orders: Order[];
 }

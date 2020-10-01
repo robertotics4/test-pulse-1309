@@ -30,9 +30,9 @@ export default class Product {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @ManyToOne((type) => Category, (products) => Product)
+    @ManyToOne((type) => Category, (category) => category.products)
     category: Category;
 
-    @ManyToMany((type) => Order, (products) => Product)
+    @ManyToMany((type) => Order, (orders) => orders.products)
     orders: Order[];
 }

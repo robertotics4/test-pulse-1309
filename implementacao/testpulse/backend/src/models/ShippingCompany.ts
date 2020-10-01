@@ -37,6 +37,6 @@ export default class ShippingCompany {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => ShippingCompany, (shippingCompany) => ShippingCompany)
+    @OneToMany((type) => Shipping, (shippings) => shippings.shippingCompany)
     shippings: Shipping[];
 }

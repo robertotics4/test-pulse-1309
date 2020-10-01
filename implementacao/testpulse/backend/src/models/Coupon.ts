@@ -27,6 +27,6 @@ export default class Coupon {
     @CreateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => Payment, (coupon) => Coupon)
+    @OneToMany((type) => Payment, (payments) => payments.coupon)
     payments: Payment[];
 }

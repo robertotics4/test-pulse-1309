@@ -37,7 +37,7 @@ export default class Address {
     @Column({ type: "varchar", length: 80, nullable: false })
     reference: string;
 
-    @Column({ type: "varchar", length: 9, nullable: false, unique: true })
+    @Column({ type: "varchar", length: 9, nullable: false })
     cep: string;
 
     @Column({ name: "is_first", type: "bool", default: false })
@@ -49,6 +49,6 @@ export default class Address {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @ManyToOne((type) => Client, (addresses) => Address)
+    @ManyToOne((type) => Client, (client) => client.addresses)
     client: Client;
 }

@@ -22,6 +22,6 @@ export default class Category {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => Product, (category) => Category)
+    @OneToMany((type) => Product, (products) => products.category)
     products: Product[];
 }

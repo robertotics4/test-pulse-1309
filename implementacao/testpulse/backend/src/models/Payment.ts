@@ -44,12 +44,15 @@ export default class Payment {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @ManyToOne((type) => Coupon, (payments) => Payment)
+    @ManyToOne((type) => Coupon, (coupon) => coupon.payments)
     coupon: Coupon;
 
-    @ManyToOne((type) => FormOfPayment, (payments) => Payment)
+    @ManyToOne(
+        (type) => FormOfPayment,
+        (formOfPayment) => formOfPayment.payments
+    )
     formOfPayment: FormOfPayment;
 
-    @OneToOne((type) => Order, (payment) => Payment)
+    @OneToOne((type) => Order, (order) => order.payment)
     order: Order;
 }

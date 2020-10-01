@@ -30,21 +30,21 @@ export default class Order {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @ManyToOne((type) => Client, (orders) => Order)
+    @ManyToOne((type) => Client, (client) => client.orders)
     client: Client;
 
-    @ManyToOne((type) => Status, (orders) => Order)
+    @ManyToOne((type) => Status, (status) => status.orders)
     status: Status;
 
-    @OneToOne((type) => Payment, (order) => Order)
+    @OneToOne((type) => Payment, (payment) => payment.order)
     @JoinColumn()
     payment: Payment;
 
-    @OneToOne((type) => Shipping, (order) => Order)
+    @OneToOne((type) => Shipping, (shipping) => shipping.order)
     @JoinColumn()
     shipping: Shipping;
 
-    @ManyToMany((type) => Product, (orders) => Order)
+    @ManyToMany((type) => Product, (products) => products.orders)
     @JoinTable()
     products: Product[];
 }

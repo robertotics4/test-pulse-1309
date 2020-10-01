@@ -33,6 +33,6 @@ export default class FormOfPayment {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => Payment, (formOfPayment) => FormOfPayment)
+    @OneToMany((type) => Payment, (payments) => payments.formOfPayment)
     payments: Payment[];
 }

@@ -22,6 +22,6 @@ export default class Status {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @OneToMany((type) => Order, (status) => Status)
+    @OneToMany((type) => Order, (orders) => orders.status)
     orders: Order[];
 }

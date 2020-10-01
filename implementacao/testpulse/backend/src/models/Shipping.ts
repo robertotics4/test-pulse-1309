@@ -27,9 +27,12 @@ export default class Shipping {
     @UpdateDateColumn({ name: "updated_at" })
     updatedAt: Date;
 
-    @ManyToOne((type) => ShippingCompany, (shippings) => Shipping)
+    @ManyToOne(
+        (type) => ShippingCompany,
+        (shippingCompany) => shippingCompany.shippings
+    )
     shippingCompany: ShippingCompany;
 
-    @OneToOne((type) => Order, (shipping) => Shipping)
+    @OneToOne((type) => Order, (order) => order.shipping)
     order: Order;
 }
